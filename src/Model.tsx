@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import axios from "axios";
-import {getProxyy} from "./App";
 
 function Model() {
   const [file, setFile] = useState(null as any);
@@ -30,9 +29,9 @@ function Model() {
             className="form-control mb-3 custom-file-input"
             onChange={handleFileChange}
           />
-          <a className="btn " onClick={handleUpload}>
+          <button className="btn" onClick={handleUpload}>
             Upload
-          </a>
+          </button>
         </div>
       </div>
     </div>

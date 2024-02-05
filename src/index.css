@@ -45,7 +45,6 @@ code {
   font-size: 4rem;
   font-family: JetBrains Mono;
   font-weight: 800;
-  line-height: 15px;
   word-wrap: break-word;
 }
 .hero p {
@@ -89,7 +88,6 @@ code {
   font-size: 4rem;
   font-family: JetBrains Mono;
   font-weight: 800;
-  line-height: 15px;
   word-wrap: break-word;
 }
 .center-abs {
@@ -119,4 +117,12 @@ code {
 }
 .result table {
   align-self: center;
+}
+
+table {
+  margin: 5%
+}
+
+.tx-wh {
+  color:white; 
 }
