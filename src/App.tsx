@@ -1,25 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import "./App.css";
+import Navbarr from "./Navbarr";
+import Home from "./Home";
+import Model from "./Model";
+import Spinner from "./Spinner";
+import Result from "./Result";
+import AboutModel from "./AboutModel";
+
+export function getProxyy() {
+  return process.env.REACT_APP_API_URL;
+}
 
 function App() {
+  const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/test",
+      element: <Model />,
+    },
+    {
+      path: "/spinner",
+      element: <Spinner />,
+    },
+    {
+      path: "/result/:id",
+      element: <Result />,
+    },
+    {
+      path: "/model",
+      element: <AboutModel />,
+    },
+  ]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Navbarr />
+      <main>
+        <RouterProvider router={router}></RouterProvider>
+      </main>
+      {/* footer */}
+    </>
   );
 }
 
