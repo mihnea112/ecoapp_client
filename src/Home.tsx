@@ -21,7 +21,7 @@ function Home() {
 								Soon you will be able to use the technologies that we develop for a small fee, so that you can save
 								money and time, when building the future solutions that will save our planet!
 							</p>
-							<a href="" className="btn btn-lg">
+							<a href="/model" className="btn btn-lg">
 								Read more{" "}
 							</a>
 						</div>

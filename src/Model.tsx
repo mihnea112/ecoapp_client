@@ -13,7 +13,9 @@ function Model() {
 
     formData.append("file", file, file.name);
 
-    const res = await axios.post(`http://localhost:8000/uploadfile`, formData, {});
+    const str = `${String(process.env.REACT_APP_APIURL)}/uploadfile`;
+
+    const res = await axios.post(str, formData, {});
     console.log(res);
     if(res.status === 200){
       window.location.replace("/result/" + res.data.id)

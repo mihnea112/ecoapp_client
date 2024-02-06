@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {useParams} from "react-router-dom";
 import Spinner from "./Spinner";
 
+
 function Result() {
 	const {id} = useParams();
 	const [detectionData, setDetectionData] = useState("null");
@@ -17,14 +18,12 @@ function Result() {
 		}
 
 		const fetchData = async () => {
-			await fetch("http://localhost:8000/recog/" + id)
+			await fetch(`${process.env.REACT_APP_APIURL}/recog/${id}`)
 				.then((response) => response.json())
 				.then((data) => {
-					if (data.recognised >= 1) {
-						console.log("valueOK");
+					if (data.recognised > 1) {
 						setDetectionData(data);
 					} else {
-						console.log("here2");
 						setCont((prevData) => !prevData);
 					}
 				});
@@ -37,11 +36,12 @@ function Result() {
 		setCounter((prev) => prev + 1);
 
 		return () => clearTimeout(timer);
+		// eslint-disable-next-line
 	}, [cont, id]);
 
 	return (
 		<>
-			{(detectionData as any).recognised === 0 || (detectionData as any).recognised === 1 ? (
+			{(detectionData as any).recognised <= 1 ? (
 				<Spinner />
 			) : (
 				<section className="result">
@@ -56,7 +56,6 @@ function Result() {
 											<tbody>
 												{(detectionData as any).error != null ? (
 													<>
-														{" "}
 														<tr>
 															<td>Error:</td>
 															<td>{(detectionData as any).error}</td>
@@ -82,7 +81,7 @@ function Result() {
 										</table>
 									</div>
 									<div className="col-md-6">
-										<img src={`http://localhost:8000/file/${(detectionData as any).fname}`} alt="recognized pic"></img>
+										<img src={`${process.env.REACT_APP_APIURL}/file/${(detectionData as any).fname}`} alt="recognized pic"></img>
 									</div>
 								</div>
 							</>

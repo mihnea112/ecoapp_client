@@ -9,7 +9,7 @@ import Result from "./Result";
 import AboutModel from "./AboutModel";
 
 export function getProxyy() {
-  return process.env.REACT_APP_API_URL;
+  return process.env.REACT_APP_APIURL
 }
 
 function App() {
